@@ -1,0 +1,11 @@
+
+.main{
+    width: 100%;
+    min-height: 90vh;
+    padding: $base*10 0;
+}
+
+
+@import './sortBy';
+@import './content';
+

@@ -1,0 +1,5 @@
+@mixin flex-row( $mainAxis, $secAxis) {
+    display: flex;
+    justify-content: $mainAxis;
+    align-items: $secAxis;
+}

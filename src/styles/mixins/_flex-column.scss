@@ -1,0 +1,6 @@
+@mixin flex-column($mainAxis, $secAxis) {
+    display: flex;
+    flex-direction: column;
+    justify-content: $mainAxis;
+    align-items: $secAxis;
+}

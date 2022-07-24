@@ -1,0 +1,70 @@
+.main__sort{
+    width: 100%;
+    height: $base*7;
+    @include flex-row(flex-end, center);
+
+    @media screen and (max-width: $break-point-sm-xs-between) {
+        &{
+            justify-content: center;
+        }
+    }
+}
+
+.sort__drop-btn{
+    height: 100%;
+    width: $base*45;
+    border: $border;
+    border-radius: $bor-rad;
+    background: white;
+    padding: $base 0;
+    transition: border-color $transition;
+    cursor: pointer;
+    z-index: 1;
+
+    p{
+        text-align: center;
+        font-size: 1.2rem;
+        color: $secondary;
+        margin-bottom: $base*3;
+    }
+
+    &:hover{
+        border-color: $secondary;
+    }
+
+    &.open .sort__drop-menu{
+        display: block;
+    }
+}
+
+.sort__drop-menu{
+    display: none;
+    width: 100%;
+    list-style: none;
+    min-height: $base*10;
+    background: white;
+    border: $border;
+    border-radius: $bor-rad-sm;
+}
+
+.drop-menu__item{
+    font-size: 1.1rem;
+    color: $secondary;
+    width: 100%;
+    text-align: center;
+    padding: $base*2 0;
+
+    &:hover{
+        background: #A7A7A7;
+    }
+
+    &:first-child{
+        border-top-left-radius: $base;
+        border-top-right-radius: $base;
+    }
+
+    &:last-child{
+        border-bottom-left-radius: $base;
+        border-bottom-right-radius: $base;
+    }
+}

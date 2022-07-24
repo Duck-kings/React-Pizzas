@@ -1,0 +1,30 @@
+
+$base: 5px;
+
+$primary: #f8f8f8;
+$secondary: rgba(34, 34, 34, 1);
+$secondary-80p: rgba(34, 34, 34, .8);
+$secondary-40p: rgba(34, 34, 34, .4);
+$secondary-20p: rgba(34, 34, 34, .2);
+$additional: #E31837;
+
+$btn: #4F4F4F; 
+
+$bg-overlay: rgba(0, 0, 0, .8);
+
+$card-shadow: rgba(34, 34, 34, .2);
+$card-shadow-active: rgba(34, 34, 34, .4);
+
+$border: 1px solid #A7A7A7;
+
+$transition: .2s ease-in;
+
+$bor-rad: $base*3;
+$bor-rad-sm: $base*2;
+
+$break-point-lg: 1199.98px;
+$break-point-md: 991.98px;
+$break-point-sm: 767.98px;
+$break-point-xs: 575.98px;
+$break-point-sm-xs-between: 700px;
+$break-point-xs-less: 430px;

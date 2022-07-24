@@ -1,0 +1,160 @@
+.main__content {
+    width: 100%;
+    height: 100%;
+    margin-top: $base*10;
+    list-style: none;
+    @include flex-row(space-between, flex-start);
+    flex-wrap: wrap;
+
+    @media screen and (max-width: $break-point-sm-xs-between) {
+        justify-content: center;
+    }
+}
+
+.content__item {
+    width: $base*65;
+    padding: $base*2;
+    border-radius: $bor-rad;
+    background: white;
+    box-shadow: 0 0 5px 1px $secondary-20p;
+    transition: box-shadow $transition;
+    margin-bottom: $base*10;
+
+    &:hover{
+        box-shadow: 0 0 15px 2px $secondary-40p;
+    }
+
+    &:hover .item__img{
+        transform: scale(1.02);
+    }
+}
+
+.item__img {
+    width: 100%;
+    height: $base*45;
+    border-radius: $bor-rad-sm;
+    transition: transform $transition;
+    position: relative;
+
+    span{
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        background: $card-shadow-active;
+        color: $primary;
+        padding: $base $base*2;
+        border-radius: $bor-rad;
+    }
+
+    img{
+        
+        width: 100%;
+        height: 100%;
+        border-radius: $bor-rad-sm;
+    }
+}
+
+.item__description {
+    margin-top: $base*3;
+}
+
+.desription__title {
+    margin-top: $base*3;
+    color: $secondary;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.desription__subtitle {
+    margin-top: $base*3;
+    color: $secondary;
+    font-size: 1rem;
+}
+
+.item__filters {
+    margin-top: $base*3;
+}
+
+.filters__size {
+    border-radius: $bor-rad;
+    background: $primary;
+    border: $border;
+    display: flex;
+
+    div{
+        font-size: 1rem;
+        color: $secondary;
+        text-align: center;
+        padding: $base $base*2;
+        flex-grow: 1;
+        border-radius: $bor-rad;
+        cursor: pointer;
+    }
+
+    div.active{
+        background: $secondary-80p;
+        color: $primary;
+
+        &:hover{
+            background: $secondary;
+        }
+    }
+}
+
+.filters__crust {
+    margin-top: $base*3;
+    border-radius: $bor-rad;
+    background: $primary;
+    border: $border;
+    display: flex;
+
+    div{
+        font-size: 1rem;
+        color: $secondary;
+        text-align: center;
+        padding: $base $base*2;
+        flex-grow: 1;
+        border-radius: $bor-rad;
+        cursor: pointer;
+    }
+
+    div.active{
+        background: $secondary-80p;
+        color: $primary;
+
+        &:hover{
+            background: $secondary;
+        }
+    }
+}
+
+.item__cart {
+    margin-top: $base*3;
+    @include flex-row(space-between, center);
+
+    p{
+        font-size: .875rem;
+        color: $secondary;
+
+        span{
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+    }
+
+
+    div{
+        color: $primary;
+        background: $additional;
+        padding: $base*2 $base*7;
+        font-weight: 600;
+        font-size: 1.5rem;
+        border-radius: $bor-rad;
+        transition: background $transition;
+        
+        &:hover{
+            background: darken($additional, 10%);
+            cursor: pointer;
+        }
+    }
+}

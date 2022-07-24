@@ -1,0 +1,76 @@
+.overlay{
+    position: absolute;
+    display: none;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: $bg-overlay;
+    z-index: 20;
+
+    &.visible{
+        display: block;
+    }
+
+    &.visible .overlay__sidebar{
+        transform: translateX(0);
+    }
+}
+
+.overlay__sidebar{
+    height: 100%;
+    min-width: $base*60;
+    width: 45%;
+    background: $primary;
+    padding: $base*10 0;
+    transform: translateX(-100%);
+
+    @media screen and (max-width: $break-point-sm) {
+        &{
+            width: 75%;
+        }
+    }
+
+    @media screen and (max-width: $break-point-xs) {
+        &{
+            width: 100%;
+        }
+    }
+}
+
+.sidebar__nav{
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar__nav__list{
+    margin: 0 auto;
+    width: 80%;
+    height: 100%;
+    list-style: none;
+}
+
+.sidebar__nav__list__item{
+    width: 100%;
+    text-align: center;
+
+    a{
+        color: $secondary;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: 600;
+        transition: all $transition;
+
+        &.active{
+            color: $additional;
+        }
+    }
+
+    &:hover a{
+        color: $additional;
+    }
+
+    &:not(:first-child){
+        margin-top: $base*3;
+    }
+}
