@@ -1,0 +1,58 @@
+.cart__fake-footer{
+    width: 100%;
+    padding: $base*5 0;
+    @include flex-row(space-between, center);
+
+    @media screen and (max-width: $break-point-sm) {
+        &{
+            padding: 0;
+        }
+    }
+
+    @media screen and (max-width: $break-point-xs-less) {
+        &{
+            @include flex-column(space-between, flex-end);
+        }
+    }
+}
+
+.btn{
+    font-size: 1.7rem;
+    padding: $base*4 $base*10;
+    border-radius: $bor-rad;
+    cursor: pointer;
+
+    @media screen and (max-width: $break-point-sm) {
+        &{
+            padding: $base*2 $base*5;
+            font-size: 1.4rem;
+        }
+    }
+}
+
+.back-btn{
+    border: 1px solid $secondary-40p;
+    color: $secondary-40p;
+    transition: all $transition;
+
+    &:hover{
+        color: $primary;
+        background: $secondary;
+    }
+
+    @media screen and (max-width: $break-point-xs-less) {
+        &{
+            margin-bottom: $base*3;
+        }
+    }
+}
+
+.pay-btn{
+    color: $primary;
+    background: $additional;
+    transition: all $transition;
+
+    &:hover{
+        background: darken($additional, 10%);
+    }
+}

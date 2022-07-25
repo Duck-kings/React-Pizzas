@@ -1,0 +1,111 @@
+.cart__fake-header{
+    width: 100%;
+    padding: $base*5 0;
+    @include flex-row(space-between, center);
+    margin-bottom: $base*5;
+
+    @media screen and (max-width: $break-point-sm) {
+        &{
+            margin-bottom: $base*3;
+            padding: 0;
+        }
+    }
+
+    @media screen and (max-width: $break-point-xs-less) {
+        &{
+            @include flex-column(flex-start, flex-start);
+            margin-bottom: $base*2;
+            padding: $base*2 0;
+        }
+    }
+}
+
+.fake-header__logo{
+    @include flex-row(flex-start, center);
+    min-width: $base*15;
+
+    &__img{
+        width: $base*6;
+        height: $base*6;
+        margin-right: $base*2;
+
+        svg{
+            width: 100%;
+            height: 100%;
+            fill: $secondary;
+        }
+    }
+
+    p{
+        font-size: 2rem;
+        font-weight: 600;
+        color: $secondary;
+    }
+
+    @media screen and (max-width: $break-point-sm) {
+
+        &__img{
+            width: $base*4;
+            height: $base*4;
+        }
+
+        p{
+            font-size: 1.7rem;
+        }
+    }
+
+    @media screen and (max-width: $break-point-xs) {
+        &{
+            margin-bottom: $base*2;
+        }
+    }
+}
+
+.fake-header__clean{
+    @include flex-row(flex-start, center);
+    min-width: $base*30;
+
+    &__img{
+        width: $base*5;
+        height: $base*5;
+        margin-right: $base*2;
+
+        svg{
+            width: 100%;
+            height: 100%;
+            fill: $secondary-40p;
+            transition: fill $transition;
+        }
+    }
+
+    p{
+        font-size: 2rem;
+        font-weight: 600;
+        color: $secondary-40p;
+        transition: color $transition;
+    }
+
+    &:hover{
+        cursor: pointer;
+
+        p{
+            color: $secondary;
+        }
+
+        svg{
+            fill: $secondary;
+        }
+    }
+
+    @media screen and (max-width: $break-point-sm) {
+
+        &__img{
+            width: $base*4;
+            height: $base*4;
+        }
+
+        p{
+            font-size: 1.7rem;
+        }
+    }
+}

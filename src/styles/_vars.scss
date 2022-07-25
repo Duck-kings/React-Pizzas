@@ -16,6 +16,7 @@ $card-shadow: rgba(34, 34, 34, .2);
 $card-shadow-active: rgba(34, 34, 34, .4);
 
 $border: 1px solid #A7A7A7;
+$cart-border: 1px solid rgba(150, 150, 150, .15);
 
 $transition: .2s ease-in;
 
@@ -28,3 +29,13 @@ $break-point-sm: 767.98px;
 $break-point-xs: 575.98px;
 $break-point-sm-xs-between: 700px;
 $break-point-xs-less: 430px;
+
+
+/*
+
+    @media screen and (max-width: $break-point) {
+        
+    }
+
+
+*/

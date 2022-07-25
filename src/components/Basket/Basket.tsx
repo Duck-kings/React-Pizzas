@@ -8,7 +8,7 @@ export const Basket: React.FC = () => {
         <main className='cart'>
             <section className='container'>
                 <section className='cart__fake-header'>
-                    <div className='fake-header__logo'>
+                <div className='fake-header__logo'>
                         <div className='fake-header__logo__img'>
                             <AiOutlineShoppingCart />
                         </div>
@@ -23,8 +23,8 @@ export const Basket: React.FC = () => {
                 </section>
                 <BasketList />
                 <section className='cart__fake-footer'>
-                    <div>Go Back</div>
-                    <div>Pay now</div>
+                    <div className='btn back-btn'>Go Back</div>
+                    <div className='btn pay-btn'>Pay now</div>
                 </section>
             </section>
         </main>
