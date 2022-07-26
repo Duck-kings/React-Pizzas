@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import {doc, getDoc, getFirestore} from 'firebase/firestore';
 
-
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FB_API_KEY,
     authDomain: process.env.REACT_APP_FB_AUTH_DOMAIN,
@@ -21,11 +20,11 @@ async function getData() {
         const docSnap = await getDoc(collection);
 
         if(docSnap.exists()){
-            console.log('Data: ', docSnap.data().pizzas);
+            return docSnap.data().pizzas;
         }
 
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 }
 
