@@ -5,7 +5,14 @@ import { Main } from './components/Main';
 import { Basket } from './components/Basket/Basket';
 import { Layout } from './components/Layout';
 
+import { getData } from './lib/firebase';
+
 function App() {
+  
+  React.useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div className="App">
       <Routes>
