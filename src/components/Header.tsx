@@ -14,24 +14,10 @@ export const Header:React.FC = () => {
                         </Link>
                         <h1 className="logo__title">React Pizzas</h1>
                     </div>
-                    <nav className="header__nav">
-                        <ul className="nav__list">
-                            <li className="nav__list__item">
-                                <a href="#">Pizzas</a>
-                            </li>
-                        </ul>
-                    </nav>
                     <div className="header__actions">
                         <Link to='/cart' className="actions__cart">
                             <AiOutlineShoppingCart />
                         </Link>
-                        <div className="actions__burger">
-                            <div className="burger__menu">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
                     </div>
                 </section>
             </section>

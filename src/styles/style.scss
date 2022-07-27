@@ -18,10 +18,6 @@
     width: 100%;
     min-height: 100vh;
     background: $primary;
-
-    &.fixed{
-        position: fixed;
-    }
 }
 
 .container{
@@ -64,7 +60,6 @@
     }
 }
 
-@import './components/overlay';
 @import './components/header';
 @import './components/main/main';
 @import './components/cart/cart';

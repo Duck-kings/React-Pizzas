@@ -1,18 +1,13 @@
 import React from 'react';
-import { getData } from '../../lib/firebase';
+
 import { IPizzas } from '../../types/types';
 import { Loader } from '../Loader';
 import { Card } from './Card';
+import { useAppSelector } from '../../hooks/redux/useAppSelector';
 
 export const CardList: React.FC = () => {
-    let [pizzas, setPizzas] = React.useState<IPizzas[]>([]);
-
-    React.useEffect(() => {
-        getData()
-            .then(res => setPizzas(prev => [...prev, ...res]))
-            .catch(e => console.log(e));
-    }, []);
-
+    const pizzas: IPizzas[] = useAppSelector(state => state.pizzas.pizzas);
+    
     return (
         <ul className="main__content">
             {

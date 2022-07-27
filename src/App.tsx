@@ -6,12 +6,20 @@ import { Basket } from './components/Basket/Basket';
 import { Layout } from './components/Layout';
 
 import { getData } from './lib/firebase';
+import { useAppDispatch } from './hooks/redux/useAppDispatch';
+import { getPizzas } from './redux/slices/pizzasSlice';
 
 function App() {
-  
+  const dispath = useAppDispatch();
+
   React.useEffect(() => {
-    getData();
-  }, []);
+    getData()
+      .then(res => {
+          localStorage.setItem('initial', JSON.stringify(res));
+          dispath(getPizzas(res));
+      })
+      .catch(e => console.log(e));
+  }, [dispath]);
 
   return (
     <div className="App">

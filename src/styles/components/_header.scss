@@ -19,32 +19,13 @@
         @include flex-row(space-between, center);
     }
 
-    &__nav{
-        height: 100%;
-        min-width: $base*30;
-        max-width: $base*140;
-
-        @media screen and (max-width: $break-point-md) {
-            &{
-                display: none;
-            }
-        }
-    }
-
     &__actions{
         @include flex-row(flex-end, center);
         height: 100%;
         min-width: $base*7;
         width: $base*15;
-
-        @media screen and (max-width: $break-point-md) {
-            &{
-                @include flex-row(space-between, center);
-            }
-        }
     }
 }
-
 
 /* Block with logo */
 .logo__img{
@@ -86,37 +67,6 @@
 }
 /* \\Block with logo */
 
-
-/* Block with navigation */
-.nav__list{
-    width: 100%;
-    height: 100%;
-    @include flex-row(space-between, center);
-    list-style: none;
-
-    &__item{
-        width: $base*15;
-
-        a{
-            color: $primary;
-            text-decoration: none;
-            font-size: 1.3rem;
-            font-weight: 500;
-            transition: all $transition;
-
-            &.active{
-                color: $additional;
-            }
-        }
-
-        &:hover a{
-            color: $additional;
-        }
-    }
-}
-/* \\Block with navigation */
-
-
 /* Block with actions */
 .actions__cart{
     width: $base*5;
@@ -133,40 +83,4 @@
         }
     }
 }
-
-
-.actions__burger{
-    width: $base*6;
-    height: $base*6;
-    display: none;
-    cursor: pointer;
-
-    &:hover {
-        span{
-            background: $additional;
-        }
-    }
-
-    @media screen and (max-width: $break-point-md) {
-        &{
-            display: block;
-        }
-    }
-}
-
-.burger__menu{
-    width: 100%;
-    height: 100%;
-    @include flex-column(space-around, center);
-
-    span{
-        display: block;
-        width: 90%;
-        height: 2px;
-        background: $primary;
-        transition: background $transition;
-    }
-}
-
-
 /* \\Block with actions */
