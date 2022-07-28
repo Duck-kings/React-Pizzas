@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import {doc, getDoc, getFirestore} from 'firebase/firestore';
+import {doc, getDoc, getFirestore, updateDoc, arrayUnion} from 'firebase/firestore';
+import { ICart, IFullData } from "../types/types";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FB_API_KEY,
@@ -13,11 +14,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const collection = doc(db, 'React-Pizzas', 'Pizzas');
+const pizzasCollection = doc(db, 'React-Pizzas', 'Pizzas');
+const cartCollection = doc(db, 'React-Pizzas', 'Cart');
 
-async function getData() {
+async function getPizzasData() {
     try {
-        const docSnap = await getDoc(collection);
+        const docSnap = await getDoc(pizzasCollection);
 
         if(docSnap.exists()){
             return docSnap.data().pizzas;
@@ -28,4 +30,28 @@ async function getData() {
     }
 }
 
-export { getData }; 
+async function getCartData() {
+    try {
+        const docSnap = await getDoc(cartCollection);
+
+        if(docSnap.exists()){
+            return docSnap.data().cart;
+        }else{
+            return null;
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function getFullData(): Promise<IFullData> {
+    const pizzas = await getPizzasData();
+    const cart = await getCartData();
+    return{
+        pizzas,
+        cart
+    }
+}
+
+export { getPizzasData, getCartData, getFullData }; 

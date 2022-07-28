@@ -5,20 +5,22 @@ import { Main } from './components/Main';
 import { Basket } from './components/Basket/Basket';
 import { Layout } from './components/Layout';
 
-import { getData } from './lib/firebase';
+import { getFullData } from './lib/firebase';
 import { useAppDispatch } from './hooks/redux/useAppDispatch';
 import { getPizzas } from './redux/slices/pizzasSlice';
+import { getCart } from './redux/slices/cartSlice';
 
 function App() {
   const dispath = useAppDispatch();
 
   React.useEffect(() => {
-    getData()
-      .then(res => {
-          localStorage.setItem('initial', JSON.stringify(res));
-          dispath(getPizzas(res));
-      })
-      .catch(e => console.log(e));
+      getFullData()
+        .then(res => {
+          localStorage.setItem('initial', JSON.stringify(res.pizzas));
+          dispath(getPizzas(res.pizzas));
+          dispath(getCart(res.cart));
+        })
+        .catch(e => console.log(e));
   }, [dispath]);
 
   return (
