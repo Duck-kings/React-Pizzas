@@ -54,4 +54,10 @@ async function getFullData(): Promise<IFullData> {
     }
 }
 
-export { getPizzasData, getCartData, getFullData }; 
+async function insertToCart(pizza: ICart[]) {
+    await updateDoc(cartCollection, {
+        cart: [...pizza]
+    });
+}
+
+export { getPizzasData, getCartData, getFullData, insertToCart }; 

@@ -1,9 +1,13 @@
 import React from 'react';
+import { useAppDispatch } from '../../hooks/redux/useAppDispatch';
 import { useAppSelector } from '../../hooks/redux/useAppSelector';
 import { IPizzas, filters, ICart } from '../../types/types';
+import { incrementCount } from '../../redux/slices/cartSlice';
+import { insertToCart } from '../../lib/firebase';
 
 export const Card: React.FC<IPizzas> = ({weight, name, keyWords, price, imageURL, size, curst, ID}) => {
     const cartItems = useAppSelector(state => state.cart.cart);
+    const dispatch = useAppDispatch();
     const [sizeState, setSizeState] = React.useState<filters[]>(size);
     const [curstState, setCurstState] = React.useState<filters[]>(curst);
 
@@ -42,7 +46,7 @@ export const Card: React.FC<IPizzas> = ({weight, name, keyWords, price, imageURL
         const activeSize = sizeState.filter(item => item.isActive ? item : null);
         const activeCurst = curstState.filter(item => item.isActive ? item : null);
 
-        const cart: ICart[] = [{
+        const cart: IPizzas = {
             ID,
             name,
             imageURL,
@@ -51,8 +55,10 @@ export const Card: React.FC<IPizzas> = ({weight, name, keyWords, price, imageURL
             weight,
             size: activeSize,
             curst: activeCurst,
-            count: 1
-        }]; 
+        };
+        
+        dispatch(incrementCount(cart));
+        insertToCart(cartItems);
     };
 
     return (

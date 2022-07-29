@@ -15,8 +15,11 @@ export interface IPizzas {
     weight: number;
 }
 
-export interface ICart extends IPizzas{
-    count: number
+export interface ICart{
+    ID: string,
+    curstValue: string,
+    sizeValue: string,
+    items: IPizzas[]
 }
 
 export interface IFullData {
