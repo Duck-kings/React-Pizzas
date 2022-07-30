@@ -33,6 +33,7 @@
 .back-btn{
     border: 1px solid $secondary-40p;
     color: $secondary-40p;
+    text-decoration: none;
     transition: all $transition;
 
     &:hover{

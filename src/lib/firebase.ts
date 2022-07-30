@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {doc, getDoc, getFirestore, updateDoc, arrayUnion} from 'firebase/firestore';
+import {doc, getDoc, getFirestore, updateDoc } from 'firebase/firestore';
 import { ICart, IFullData } from "../types/types";
 
 const firebaseConfig = {

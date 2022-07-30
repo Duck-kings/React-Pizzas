@@ -1,16 +1,12 @@
 import React from 'react';
 import { useAppDispatch } from '../../hooks/redux/useAppDispatch';
-import { useAppSelector } from '../../hooks/redux/useAppSelector';
-import { IPizzas, filters, ICart } from '../../types/types';
-import { incrementCount } from '../../redux/slices/cartSlice';
-import { insertToCart } from '../../lib/firebase';
+import { IPizzas, filters } from '../../types/types';
+import { addToCart } from '../../redux/slices/cartSlice';
 
 export const Card: React.FC<IPizzas> = ({weight, name, keyWords, price, imageURL, size, curst, ID}) => {
-    const cartItems = useAppSelector(state => state.cart.cart);
     const dispatch = useAppDispatch();
     const [sizeState, setSizeState] = React.useState<filters[]>(size);
     const [curstState, setCurstState] = React.useState<filters[]>(curst);
-
 
     const keyWordToString = keyWords.map(item => {
         return item[0].toUpperCase() + item.slice(1);
@@ -42,7 +38,7 @@ export const Card: React.FC<IPizzas> = ({weight, name, keyWords, price, imageURL
         setCurstState(prev => [...newArr]);
     };
 
-    const addToCart = (): void => {
+    const addPizza = (): void => {
         const activeSize = sizeState.filter(item => item.isActive ? item : null);
         const activeCurst = curstState.filter(item => item.isActive ? item : null);
 
@@ -57,8 +53,7 @@ export const Card: React.FC<IPizzas> = ({weight, name, keyWords, price, imageURL
             curst: activeCurst,
         };
         
-        dispatch(incrementCount(cart));
-        insertToCart(cartItems);
+        dispatch(addToCart(cart));
     };
 
     return (
@@ -89,7 +84,7 @@ export const Card: React.FC<IPizzas> = ({weight, name, keyWords, price, imageURL
             </div>
             <div className="item__cart">
                 <p><span>{price}</span>$</p>
-                <div onClick={addToCart}>To cart</div>
+                <div onClick={addPizza}>To cart</div>
             </div>
         </li>
     )
