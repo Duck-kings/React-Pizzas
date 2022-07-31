@@ -1,3 +1,4 @@
+/* ul with all orders */
 .cart__list{
     width: 100%;
     margin-bottom: $base*10;
@@ -30,6 +31,7 @@
     }
 }
 
+/* block with shor info about order */
 .item__info{
     @include flex-row(flex-start, center);
     min-width: $base*35;
@@ -79,7 +81,9 @@
         } 
     }
 }
+/* \\block with shor info about order */
 
+/* block with total number of pizzas */
 .item__count{
     @include flex-row(space-between, center);
     min-width: $base*17;
@@ -102,7 +106,9 @@
         }
     }
 }
+/* \\block with total number of pizzas */
 
+/* common style for rounded button in ul of orders */
 .rounded-btn{
     width: $base*7;
     height: $base*7;
@@ -127,7 +133,16 @@
         }
     }
 }
+/* \\common style for rounded button in ul of orders */
 
+/* disabled button */
+.minus.disabled {
+    pointer-events: none;
+    opacity: .3;
+}
+/* \\disabled button */
+
+/* block with total price */
 .item__price{
     font-size: 1.7rem;
     font-weight: 700;
@@ -146,7 +161,9 @@
         }
     }
 }
+/* \\block with total price */
 
+/* block with button for deleting order from cart */
 .delete{
     @media screen and (max-width: $break-point-sm) {
         &{
@@ -166,3 +183,6 @@
         }
     }
 }
+/* \\block with button for deleting order from cart */
+
+/* \\ul with all orders */

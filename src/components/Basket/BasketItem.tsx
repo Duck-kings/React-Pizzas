@@ -12,7 +12,7 @@ interface Props {
 export const BasketItem: React.FC<Props> = ({cart, id}) => {
     const dispatch = useAppDispatch();
 
-    const deleteItem = (index: number): void => {
+    const deleteFromCart = (index: number): void => {
         dispatch(deletePizza(index));
     };
 
@@ -21,7 +21,9 @@ export const BasketItem: React.FC<Props> = ({cart, id}) => {
     };
 
     const deleteOnePizza = (index: number): void => {
-        dispatch(decrementCount(index));
+        if(cart.items.length > 1){
+            dispatch(decrementCount(index));
+        }
     };
 
     const totalPrice = (): number => {
@@ -30,7 +32,7 @@ export const BasketItem: React.FC<Props> = ({cart, id}) => {
         });
 
         const price = arr.reduce((curr, sum) => curr + sum);
-        return price
+        return price;
     }
 
     return (
@@ -41,11 +43,20 @@ export const BasketItem: React.FC<Props> = ({cart, id}) => {
                 </div>
                 <div className='item__info__description'>
                     <p className='description__title'>{cart.items[0].name}</p>
-                    <p className='description__subtitle'>{`${cart.sizeValue} size, ${cart.curstValue} curst`}</p>
+                    <p className='description__subtitle'>
+                        {`${cart.sizeValue} size, ${cart.curstValue} curst`}
+                    </p>
                 </div>
             </div>
             <div className='item__count'>
-                <div className='rounded-btn' onClick={() => {deleteOnePizza(id)}}>
+                <div 
+                    className={
+                        cart.items.length > 1 
+                        ? 'rounded-btn minus' 
+                        : 'rounded-btn minus disabled'
+                    } 
+                    onClick={() => {deleteOnePizza(id)}}
+                >
                     <AiOutlineMinus />
                 </div>
                 <span>{cart.items.length}</span>
@@ -54,7 +65,7 @@ export const BasketItem: React.FC<Props> = ({cart, id}) => {
                 </div>
             </div>
             <p className='item__price'>{totalPrice()}<span>$</span></p>
-            <div onClick={() => {deleteItem(id)}}>
+            <div onClick={() => {deleteFromCart(id)}}>
                 <div className='rounded-btn delete'>
                     <AiOutlineClose />
                 </div>

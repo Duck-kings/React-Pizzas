@@ -26,3 +26,12 @@ export interface IFullData {
     pizzas: IPizzas[],
     cart: ICart[]
 }
+
+export type pizzaInfo = {
+    ID: string,
+    name: string,
+    imageURL: string,
+    price: number,
+    keyWords: string[],
+    weight: number
+};

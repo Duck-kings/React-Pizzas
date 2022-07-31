@@ -1,3 +1,4 @@
+/* fake-footer in cart */
 .cart__fake-footer{
     width: 100%;
     padding: $base*5 0;
@@ -16,6 +17,7 @@
     }
 }
 
+/* common style for btn in fake-footer */
 .btn{
     font-size: 1.7rem;
     padding: $base*4 $base*10;
@@ -29,6 +31,7 @@
         }
     }
 }
+/* \\common style for btn in fake-footer */
 
 .back-btn{
     border: 1px solid $secondary-40p;
@@ -57,3 +60,4 @@
         background: darken($additional, 10%);
     }
 }
+/* \\fake-footer in cart */

@@ -2,18 +2,22 @@
 @import './mixins/flex-row';
 @import './mixins/flex-column';
 
+/* noramlize css */
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-size: 16px;
+    font-family: 'Oswald', sans-serif;
 }
 
 ::after, ::before, h1, h2, h3, h4, h5, h6, p, li, img, ul{
     margin: 0;
     padding: 0;
 }
+/* \\noramlize css */
 
+/* containers */
 .App{
     width: 100%;
     min-height: 100vh;
@@ -31,6 +35,13 @@
             padding: 0 $base*5;
         }
     }
+}
+/* \\containers */
+
+/* Loader */
+.loader__container{
+    margin: 0 auto;
+    margin-top: $base*5;
 }
 
 .lds-dual-ring {
@@ -59,6 +70,7 @@
         transform: rotate(360deg);
     }
 }
+/* \\Loader */
 
 @import './components/header';
 @import './components/main/main';

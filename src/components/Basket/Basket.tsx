@@ -14,6 +14,11 @@ export const Basket: React.FC = () => {
         dispatch(cleanCart());
     };
 
+    const payOrder = (): void => {
+        alert('Thanks for your order =)!');
+        dispatch(cleanCart());
+    };
+
     return (
         <main className='cart'>
             <section className='container'>
@@ -34,7 +39,7 @@ export const Basket: React.FC = () => {
                 <BasketList />
                 <section className='cart__fake-footer'>
                     <Link to='/' className='btn back-btn'>Go Back</Link>
-                    <div className='btn pay-btn'>Pay now</div>
+                    <div className='btn pay-btn' onClick={payOrder}>Pay now</div>
                 </section>
             </section>
         </main>

@@ -25,9 +25,12 @@ const cartSlice = createSlice({
                 items: [action.payload]
             };
 
+            // check if the cart is empty 
             if(!state.cart.length) {
+                //push to cart newPayload
                 state.cart = [...state.cart, newPayload]
             }else{
+                // find the index of the item that is in the cart
                 const el = [...state.cart].findIndex((item: ICart) => {
                     const curstEquals = item.curstValue === newPayload.curstValue;
                     const sizeEquals = item.sizeValue === newPayload.sizeValue;
@@ -39,8 +42,10 @@ const cartSlice = createSlice({
                 });
 
                 if(el !== -1) {
+                    // if there is such item push in array items payload
                     state.cart[el].items = [...state.cart[el].items, action.payload];
                 }else{
+                    // if there is no such item push in array items newPayload
                     state.cart = [...state.cart, newPayload];
                 }
             }
@@ -54,7 +59,10 @@ const cartSlice = createSlice({
             insertToCart(state.cart);
         },
         incrementCount: (state: state, action: PayloadAction<number>): void => {
+            // take first element from cart items on the index from payload
             const newElement = state.cart[action.payload].items[0];
+
+            // take prev state cart items on the index from payload
             const prevItemsState = [...state.cart[action.payload].items];
             state.cart[action.payload].items = [...prevItemsState, newElement];
 

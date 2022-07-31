@@ -1,3 +1,4 @@
+/* ul with all pizzas */
 .main__content {
     width: 100%;
     height: 100%;
@@ -10,7 +11,9 @@
         justify-content: center;
     }
 }
+/* \\ul with all pizzas */
 
+/* element of ul with pizzas */
 .content__item {
     width: $base*65;
     padding: $base*2;
@@ -54,6 +57,7 @@
     }
 }
 
+/* block with description(title, subtitle) */
 .item__description {
     margin-top: $base*3;
 }
@@ -71,12 +75,14 @@
     font-size: 1rem;
     min-height: $base*8;
 }
+/* \\block with description(title, subtitle) */
 
+/* block with filters */
 .item__filters {
     margin-top: $base*3;
 }
 
-.filters__size {
+.filters__size, .filters__crust {
     border-radius: $bor-rad;
     background: $primary;
     border: $border;
@@ -104,32 +110,11 @@
 
 .filters__crust {
     margin-top: $base*3;
-    border-radius: $bor-rad;
-    background: $primary;
-    border: $border;
-    display: flex;
-
-    div{
-        font-size: 1rem;
-        color: $secondary;
-        text-align: center;
-        padding: $base $base*2;
-        flex-grow: 1;
-        border-radius: $bor-rad;
-        cursor: pointer;
-    }
-
-    div.active{
-        background: $secondary-80p;
-        color: $primary;
-
-        &:hover{
-            background: $secondary;
-        }
-    }
 }
+/* \\block with filters */
 
-.item__cart {
+/* block with price and addToCart button */
+.item__action {
     margin-top: $base*3;
     @include flex-row(space-between, center);
 
@@ -142,7 +127,6 @@
             font-weight: 600;
         }
     }
-
 
     div{
         color: $primary;
@@ -159,3 +143,6 @@
         }
     }
 }
+/* \\block with price and addToCart button */
+
+/* \\element of ul with pizzas */

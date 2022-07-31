@@ -1,3 +1,4 @@
+/* fake-header in cart */
 .cart__fake-header{
     width: 100%;
     padding: $base*5 0;
@@ -45,8 +46,8 @@
     @media screen and (max-width: $break-point-sm) {
 
         &__img{
-            width: $base*4;
-            height: $base*4;
+            width: $base*5;
+            height: $base*5;
         }
 
         p{
@@ -66,8 +67,8 @@
     min-width: $base*30;
 
     &__img{
-        width: $base*5;
-        height: $base*5;
+        width: $base*6;
+        height: $base*6;
         margin-right: $base*2;
 
         svg{
@@ -100,8 +101,8 @@
     @media screen and (max-width: $break-point-sm) {
 
         &__img{
-            width: $base*4;
-            height: $base*4;
+            width: $base*5;
+            height: $base*5;
         }
 
         p{
@@ -109,3 +110,4 @@
         }
     }
 }
+/* \\fake-header in cart */

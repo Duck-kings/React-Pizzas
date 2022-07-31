@@ -1,3 +1,4 @@
+/* sort block */
 .main__sort{
     width: 100%;
     height: $base*7;
@@ -9,7 +10,9 @@
         }
     }
 }
+/* \\sort block */
 
+/* btn for open drop-menu */
 .sort__drop-btn{
     height: 100%;
     width: $base*45;
@@ -24,8 +27,6 @@
         text-align: center;
         font-size: 1.2rem;
         color: $secondary;
-        margin-bottom: $base*2;
-        padding: $base 0;
     }
 
     &:hover{
@@ -36,7 +37,9 @@
         display: block;
     }
 }
+/* \\btn for open drop-menu */
 
+/* drop-menu */
 .sort__drop-menu{
     display: none;
     width: 100%;
@@ -68,3 +71,4 @@
         border-bottom-right-radius: $base;
     }
 }
+/* \\drop-menu */

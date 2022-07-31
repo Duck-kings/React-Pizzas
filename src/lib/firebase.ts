@@ -11,12 +11,16 @@ const firebaseConfig = {
     appId: process.env.REACT_APP_FB_APP_ID
 };
 
+// init firebase app
 const app = initializeApp(firebaseConfig);
+// connect to firebase/firestore
 const db = getFirestore(app);
 
+// ref on pizzas and cart collections
 const pizzasCollection = doc(db, 'React-Pizzas', 'Pizzas');
 const cartCollection = doc(db, 'React-Pizzas', 'Cart');
 
+// get data from pizzas collection
 async function getPizzasData() {
     try {
         const docSnap = await getDoc(pizzasCollection);
@@ -30,6 +34,7 @@ async function getPizzasData() {
     }
 }
 
+// get data from cart collection
 async function getCartData() {
     try {
         const docSnap = await getDoc(cartCollection);
@@ -45,6 +50,7 @@ async function getCartData() {
     }
 }
 
+// get data from both collections
 async function getFullData(): Promise<IFullData> {
     const pizzas = await getPizzasData();
     const cart = await getCartData();
@@ -54,10 +60,15 @@ async function getFullData(): Promise<IFullData> {
     }
 }
 
+// push pizza to cart collection
 async function insertToCart(pizza: ICart[]) {
-    await updateDoc(cartCollection, {
-        cart: [...pizza]
-    });
+    try {
+        await updateDoc(cartCollection, {
+            cart: [...pizza]
+        });
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 export { getPizzasData, getCartData, getFullData, insertToCart }; 

@@ -2,58 +2,40 @@ import React from 'react';
 import { useAppDispatch } from '../../hooks/redux/useAppDispatch';
 import { IPizzas, filters } from '../../types/types';
 import { addToCart } from '../../redux/slices/cartSlice';
+import { toggleActive } from '../../lib/toggleActive';
+import { getCartPizza } from '../../lib/getCartPizza';
+import { pizzaInfo } from '../../types/types';
 
 export const Card: React.FC<IPizzas> = ({weight, name, keyWords, price, imageURL, size, curst, ID}) => {
     const dispatch = useAppDispatch();
     const [sizeState, setSizeState] = React.useState<filters[]>(size);
     const [curstState, setCurstState] = React.useState<filters[]>(curst);
+    const pizzaInfo: pizzaInfo = {
+        ID,
+        name,
+        imageURL,
+        price,
+        keyWords,
+        weight
+    };
 
     const keyWordToString = keyWords.map(item => {
         return item[0].toUpperCase() + item.slice(1);
     }).join(', ');
 
-    const handleSizeClick = (arr: filters[], index: number): void => {
-        const newArr = arr.map((item) => {
-            if(item.id === index){
-                return {...item, isActive: true}
-            }
-            else{
-                return {...item, isActive: false}
-            }
-        });
-
-        setSizeState(prev => [...newArr]);
+    const toggleActiveSize = (arr: filters[], index: number): void => {
+        const newArr = toggleActive(arr, index);
+        setSizeState([...newArr]);
     };
 
-    const handleCurstClick = (arr: filters[], index: number): void => {
-        const newArr = arr.map((item) => {
-            if(item.id === index){
-                return {...item, isActive: true}
-            }
-            else{
-                return {...item, isActive: false}
-            }
-        });
-
-        setCurstState(prev => [...newArr]);
+    const toggleActiveCurst = (arr: filters[], index: number): void => {
+        const newArr = toggleActive(arr, index);
+        setCurstState([...newArr]);
     };
 
     const addPizza = (): void => {
-        const activeSize = sizeState.filter(item => item.isActive ? item : null);
-        const activeCurst = curstState.filter(item => item.isActive ? item : null);
-
-        const cart: IPizzas = {
-            ID,
-            name,
-            imageURL,
-            price,
-            keyWords,
-            weight,
-            size: activeSize,
-            curst: activeCurst,
-        };
-        
-        dispatch(addToCart(cart));
+        const pizza = getCartPizza(sizeState, curstState, pizzaInfo);
+        dispatch(addToCart(pizza));
     };
 
     return (
@@ -70,19 +52,31 @@ export const Card: React.FC<IPizzas> = ({weight, name, keyWords, price, imageURL
                 <div className="filters__size">
                     {
                         sizeState.map((item, index) => {
-                            return <div key={index} className={item.isActive ? 'active' : ''} onClick={() => handleSizeClick(size, index)}>{item.value[0].toUpperCase() + item.value.slice(1)}</div>
+                            return <div 
+                                key={index} 
+                                className={item.isActive ? 'active' : ''} 
+                                onClick={() => toggleActiveSize(size, index)}
+                            >
+                                {item.value[0].toUpperCase() + item.value.slice(1)}
+                            </div>
                         })
                     }
                 </div>
                 <div className="filters__crust">
                     {
                         curstState.map((item, index) => {
-                            return <div key={index} className={item.isActive ? 'active' : ''} onClick={() => handleCurstClick(curst, index)}>{item.value[0].toUpperCase() + item.value.slice(1)}</div>
+                            return <div 
+                                key={index} 
+                                className={item.isActive ? 'active' : ''} 
+                                onClick={() => toggleActiveCurst(curst, index)}
+                            >
+                                {item.value[0].toUpperCase() + item.value.slice(1)}
+                            </div>
                         })
                     }
                 </div>
             </div>
-            <div className="item__cart">
+            <div className="item__action">
                 <p><span>{price}</span>$</p>
                 <div onClick={addPizza}>To cart</div>
             </div>
