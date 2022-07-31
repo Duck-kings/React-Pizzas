@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+You can visit site on the link: [https://react-pizzas-4743b.web.app](https://react-pizzas-4743b.web.app).
 
 ## Available Scripts
 
